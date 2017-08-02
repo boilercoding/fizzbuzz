@@ -5,12 +5,10 @@ defmodule Fizzbuzz do
   def fizzbuzz(n),                                    do: n
 
   def result(n) do
-    Enum.map(1..n, fn(n) -> {n , fizzbuzz(n)} end) |> Map.new
+    Enum.map(1..n, fn(n) -> {n , fizzbuzz(n)} end) |> Enum.sort
   end
 
-  def print_result(n) do
-    result = result(n)
-    result_keys = Map.keys(result) |> Enum.sort
-    Enum.each(result_keys, fn(n) -> IO.puts "#{n}: #{result[n]}" end)
+  def print_result(num) do
+    Enum.each(result(num), fn({n, r}) -> IO.puts "#{n}: #{r}" end)
   end
 end
