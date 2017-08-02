@@ -7,4 +7,10 @@ defmodule Fizzbuzz do
   def result(n) do
     Enum.map(1..n, fn(n) -> {n , fizzbuzz(n)} end) |> Map.new
   end
+
+  def print_result(n) do
+    result = result(n)
+    result_keys = Map.keys(result) |> Enum.sort
+    Enum.each(result_keys, fn(n) -> IO.puts "#{n}: #{result[n]}" end)
+  end
 end
